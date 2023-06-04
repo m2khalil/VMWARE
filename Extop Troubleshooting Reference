@@ -1,3 +1,29 @@
 For one page reference of VMWARE exptop command search on google for following "extop reference running system"
 or
 https://www.running-system.com/wp-content/uploads/2015/04/ESXTOP_vSphere6.pdf
+
+
+esxtop 
+it will show the cpu screen updating every 2 seconds
+type "V" it will show only vms
+
+here in vms screen
+%rdy value can helpful if the underlying host has some cpu contention.
+$CSTP ideally should be zero or below 5% is ok.
+
+type "m" will show the memory screen
+here SWCUR and SWTCH are swap values, high swap values means memory lack are there.
+here MCTL2 is showing about balooning/if it is enabled or not.
+if the value is "N" then you dont have vmware tools installed, balooning driver is based on vmtools.
+if MCTLTGT>MCTLSZ : then showing balooning activity will increase in future
+
+
+type "d" for disk
+will show the physcail storage adaptor.
+DAVG/cmd : device average IO lantency, storage device latency itself.isci, fiber channel latency, this latency is acceptable upto 9ms
+KAVG/cmd:  how much latency vSphere is causing itself. Kernal average latency should be below  1 MS
+
+
+type "v" disk in vm.
+will show the IO latency in vms.
+type "h" for help.
